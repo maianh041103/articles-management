@@ -7,8 +7,18 @@ type Article {
   avartar:String,
   description:String
 }
+
 type Query{
   getArticles: [Article],
   getArticle(id:ID):Article
 }
-`
+
+input ArticleInput{
+  title:String,
+  avartar:String,
+  description:String
+}
+
+type Mutation{
+  createArticle(article:ArticleInput):Article
+}`
