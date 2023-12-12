@@ -36,6 +36,17 @@ export const resolvers = {
         _id: id
       });
       return newRecord;
+    },
+    deleteArticle: async (_, args) => {
+      const { id } = args;
+      await Article.updateOne({
+        _id: id
+      }, {
+        deleted: true,
+        deletedAt: new Date()
+      });
+
+      return "Xoa thanh cong";
     }
   }
 }
