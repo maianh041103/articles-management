@@ -8,6 +8,7 @@ type Article {
   description:String
 }
 type Query{
-  getArticles: [Article]
+  getArticles: [Article],
+  getArticle(id:ID):Article
 }
 `
