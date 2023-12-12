@@ -1,23 +1,13 @@
 import express, { Express, Router } from "express";
 import dotenv from "dotenv";
 import * as database from "./config/database";
-import { ApolloServer, gql } from "apollo-server-express";
+import { ApolloServer } from "apollo-server-express";
+
+import { typeDefs } from './typeDefs';
+
+import { resolvers } from './resolvers';
 
 const startServer = async () => {
-
-  const typeDefs = gql`
-    type Query{
-      hello: String
-    }
-  `
-
-  const resolvers = {
-    Query: {
-      hello: () => {
-        return "helloWorld"
-      }
-    }
-  }
 
   dotenv.config();
   const app: Express = express();
