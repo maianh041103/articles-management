@@ -26,6 +26,16 @@ export const resolvers = {
       await record.save();
 
       return record;
+    },
+    editArticle: async (_, args) => {
+      const { id, article } = args;
+      await Article.updateOne({
+        _id: id,
+      }, article);
+      const newRecord = await Article.findOne({
+        _id: id
+      });
+      return newRecord;
     }
   }
 }
