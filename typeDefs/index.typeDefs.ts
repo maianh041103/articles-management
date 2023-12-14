@@ -1,3 +1,4 @@
 import { articleTypeDefs } from "./article.typeDefs";
 import { categoryTypeDefs } from "./category.typeDefs";
-export const typeDefs = [articleTypeDefs, categoryTypeDefs];
+import { regiterTypeDefs } from "./register.typeDefs";
+export const typeDefs = [articleTypeDefs, categoryTypeDefs, regiterTypeDefs];
