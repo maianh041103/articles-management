@@ -16,8 +16,14 @@ export const regiterTypeDefs = gql`
     password:String,
   }
 
+  input LoginUserInput{
+    email:String,
+    password:String
+  }
+
   type Mutation{
-    regiterUser(user:RegisterUserInput ):User
+    regiterUser(user:RegisterUserInput ):User,
+    loginUser(user:LoginUserInput):User
   }
 
 `

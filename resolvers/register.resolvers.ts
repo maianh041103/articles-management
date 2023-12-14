@@ -30,6 +30,33 @@ export const registerResolvers = {
           token: data.token
         }
       }
+    },
+
+    loginUser: async (_, args) => {
+      const { email, password } = args.user;
+      const emailExists = await User.findOne({
+        email: email
+      });
+      if (!emailExists) {
+        return {
+          code: 400,
+          message: "Email không hợp lệ"
+        }
+      } else {
+        if (emailExists.password != md5(password)) {
+          return {
+            code: 400,
+            message: "Mật khẩu không chính xác"
+          }
+        }
+        else {
+          return {
+            code: 200,
+            message: "Đăng nhập thành công",
+            token: emailExists.token
+          }
+        }
+      }
     }
   }
 }
