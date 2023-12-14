@@ -10,7 +10,15 @@ type Article {
 }
 
 type Query{
-  getArticles: [Article],
+  getArticles(
+    sortKey:String,
+    sortValue:String,
+    currentPage:Int = 1,
+    limit:Int = 2,
+    filterKey:String,
+    filterValue:String,
+    keyword:String
+    ): [Article],
   getArticle(id:ID):Article
 }
 
