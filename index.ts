@@ -2,10 +2,9 @@ import express, { Express, Router } from "express";
 import dotenv from "dotenv";
 import * as database from "./config/database";
 import { ApolloServer } from "apollo-server-express";
-
 import { typeDefs } from './typeDefs/index.typeDefs';
-
 import { resolvers } from './resolvers/index.resolvers';
+import { auth } from "./middlerware/auth.middlerware";
 
 const startServer = async () => {
 
@@ -20,9 +19,12 @@ const startServer = async () => {
   //End kết nối database
 
   //GQL
+  app.use('/graphql', auth);
+
   const appoloServer = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers,
+    context: ({ req }) => req,
   })
 
   await appoloServer.start();

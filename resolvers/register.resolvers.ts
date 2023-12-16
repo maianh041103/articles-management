@@ -58,5 +58,25 @@ export const registerResolvers = {
         }
       }
     }
+  },
+
+  Query: {
+    getUser: async (_, args, context) => {
+      if (context["user"]) {
+        return {
+          code: 200,
+          message: "Thành công",
+          fullName: context["user"].fullName,
+          email: context["user"].email,
+          token: context["user"].token
+        }
+      }
+      else {
+        return {
+          code: 400,
+          message: "Thất bại"
+        }
+      }
+    }
   }
 }

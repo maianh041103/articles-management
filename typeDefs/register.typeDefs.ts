@@ -23,7 +23,11 @@ export const regiterTypeDefs = gql`
 
   type Mutation{
     regiterUser(user:RegisterUserInput ):User,
-    loginUser(user:LoginUserInput):User
+    loginUser(user:LoginUserInput):User,
+  }
+
+  type Query{
+    getUser:User
   }
 
 `
