@@ -24,6 +24,7 @@ const startServer = async () => {
   const appoloServer = new ApolloServer({
     typeDefs,
     resolvers,
+    introspection: true, //tự gợi ý các hàm trên graphql khi deploy online
     context: ({ req }) => req,
   })
 
